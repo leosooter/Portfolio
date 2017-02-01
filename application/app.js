@@ -11,18 +11,18 @@ portfolioApp.factory("projectFactory", [function(){
   var digitalReserve = {
     name : 'digitalReserve',
     title : 'Digital Reserve',
-    iFrame : 'https://leosooter.github.io/digital-reserve/',
+    url : 'https://leosooter.github.io/digital-reserve/',
     screenShot : 'assets/images/projects/digital-reserve/widescreen.png',
     description : `Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
       incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
       exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
       Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
       fugiat nulla pariatur.`,
-
+    technologies : ['HTML', 'Scss', 'JQuery', 'Django', 'SQLlite'],
     details : [
       overview,
       {
-        name : 'Responsive Design',
+        name : 'Responsive',
         title : 'Mobile-First Design',
         screenShot : 'assets/images/projects/digital-reserve/mobile2.png',
         description : `Screen and menus adapt for optimal experience on any screen`,
@@ -46,14 +46,14 @@ portfolioApp.factory("projectFactory", [function(){
   var blackJack = {
     name : 'blackjack',
     title : 'BlackJack Game',
-    iFrame : 'https://leosooter.github.io/blackjack/',
+    url : 'https://leosooter.github.io/blackjack/',
     screenShot : 'assets/images/projects/blackjack/main.png',
     description : `Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
       incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
       exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
       Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
       fugiat nulla pariatur.`,
-
+    technologies : ['HTML', 'Scss', 'JQuery'],
     details : [
       overview,
       {
@@ -83,13 +83,14 @@ portfolioApp.factory("projectFactory", [function(){
   var jetFighter = {
     name : 'jetfighter',
     title : 'Jet Fighter Game',
-    iFrame : 'https://leosooter.github.io/dogfight/',
+    url : 'https://leosooter.github.io/dogfight/',
     screenShot : 'assets/images/projects/jetfighter/jetfighter.png',
     description : `Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
       incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
       exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
       Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
       fugiat nulla pariatur.`,
+    technologies : ['HTML', 'Scss', 'JQuery'],
     details : [
       overview,
       {
@@ -171,7 +172,7 @@ portfolioApp.factory("projectFactory", [function(){
     projects : [blackJack],
   };
   var resonsiveSkill = {
-    name : "Responsive Design",
+    name : "Responsive",
     projects : [digitalReserve],
   };
   var dataStructuresSkill = {
@@ -190,7 +191,7 @@ portfolioApp.factory("projectFactory", [function(){
 
   factory.featured = digitalReserve;
 
-  factory.projects = [blackJack, jetFighter, digitalReserve];
+  factory.projects = [digitalReserve, jetFighter, blackJack];
 
   return factory;
 }])
@@ -209,7 +210,7 @@ portfolioApp.controller("projectController", ["$scope", "projectFactory", "$sce"
   $scope.featured = projectFactory.featured;
   $scope.details = $scope.featured.details;
   $scope.featuredDetail = $scope.details[0];
-  $scope.featuredIFrame = $sce.trustAsResourceUrl($scope.featured.iFrame);
+  $scope.featuredIFrame = $sce.trustAsResourceUrl($scope.featured.url);
 
     $scope.changeFeaturedDetail = function(detail){
     console.log("Changeing featuredDetail to", detail.name);
@@ -222,9 +223,9 @@ portfolioApp.controller("projectController", ["$scope", "projectFactory", "$sce"
     $scope.featured = projectFactory.featured;
     $scope.details = $scope.featured.details;
     $scope.featuredDetail = $scope.details[0];
-    $scope.featuredIFrame = $sce.trustAsResourceUrl($scope.featured.iFrame);
+    $scope.featuredIFrame = $sce.trustAsResourceUrl($scope.featured.url);
     //$scope.moveToLocation("projects-bookmark");
-    $scope.goToElement("projects-bookmark");
+    //$scope.goToElement("projects-bookmark");
   }
   //ng-click="goToElement('projects-bookmark')
   $scope.moveToLocation = function(location){

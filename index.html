@@ -32,40 +32,74 @@
             </h5>
           </div>
       </section>
+
       <div id="center-mask"></div>
 
-      <section id="featured-wrapper">
-        <span id="projects-bookmark" class="bookmark"></span>
-        <h2 id="featured-header">Featured Project</h2>
-        <h3>{{featured.title}}</h3>
-        <ul id="detail-nav">
-          <li ng-repeat="detail in details" ng-click="changeFeaturedDetail(detail)" class="skill" ng-class="{'current-detail' : featuredDetail.title === detail.title}">{{detail.name}}</li>
-        </ul>
-        <iframe src="{{featuredIFrame}}" class="screen-shot"></iframe>
-
-        <div class="detail">
-          <h4>{{featuredDetail.title}}</h4>
-          <h5 ng-if="featuredDetail.title ==='Overview'">{{featured.description}}</h5>
-          <h5 ng-if="featuredDetail.title !='Overview'">{{featuredDetail.description}}</h5>
-          <img ng-if="featuredDetail.screenShot" src="{{featuredDetail.screenShot}}" alt="{{featuredDetail.title}} detail">
-        </div>
-
-      </section>
-
       <section id="gallery-wrapper">
-
+        <span id="projects-bookmark" class="bookmark"></span>
+        <h3>Projects</h3>
         <div id="project-gallery">
-          <div class="project" ng-repeat="project in projects">
-            <h4 class="project-title">{{project.title}}</h4>
-            <div class="project-description">
-              <h5>
-                {{project.description}}
-              </h5>
-              <a class="project-link" ng-click="changeFeaturedProject(project)">View this Project</a>
+
+          <div class="project" ng-repeat="project in projects" ng-class="{'current-project' : project == featured}">
+            <div class="project-description" ng-click="changeFeaturedProject(project)">
+              <h5>{{project.title}}</h5>
+              <p>
+                <span ng-repeat="technology in project.technologies" class="project-tech">{{technology}}</span>
+              </p>
+              <a class="project-link" href="{{project.url}}">Project Site</a>
+
             </div>
             <img class="screen-image" src="{{project.screenShot}}" alt="">
           </div>
+
+          <div class="project" ng-repeat="project in projects">
+            <div class="project-description" ng-click="changeFeaturedProject(project)">
+              <h5>{{project.title}}</h5>
+              <p>
+                <span ng-repeat="technology in project.technologies" class="project-tech">{{technology}}</span>
+              </p>
+              <a class="project-link" href="{{project.url}}">Project Site</a>
+
+            </div>
+            <img class="screen-image" src="{{project.screenShot}}" alt="">
+          </div>
+
+          <div class="project" ng-repeat="project in projects">
+
+            <div class="project-description" ng-click="changeFeaturedProject(project)">
+
+              <h5>{{project.title}}</h5>
+              <p>
+                <span ng-repeat="technology in project.technologies" class="project-tech">{{technology}}</span>
+              </p>
+              <a class="project-link" href="{{project.url}}">Project Site</a>
+
+            </div>
+            <img class="screen-image" src="{{project.screenShot}}" alt="">
+          </div>
+
         </div>
+      </section>
+
+      <section id="featured-wrapper">
+
+        <div id="screen-shot-wrapper">
+          <iframe src="{{featuredIFrame}}" class="screen-shot"></iframe>
+        </div>
+
+        <div id="sidebar">
+          <h4><strong>{{featured.title}}</strong></h4>
+
+          <div class="detail">
+            <h4>{{featuredDetail.title}}</h4>
+            <h5 ng-if="featuredDetail.title ==='Overview'">{{featured.description}}</h5>
+            <h5 ng-if="featuredDetail.title !='Overview'">{{featuredDetail.description}}</h5>
+            <ul id="detail-nav">
+              <li ng-repeat="detail in details" ng-click="changeFeaturedDetail(detail)" class="skill" ng-class="{'current-detail' : featuredDetail.title === detail.title}">{{detail.name}}</li>
+            </ul>
+          </div>
+        </div>
+
       </section>
 
       <div id="lower-mask"></div>

@@ -202,7 +202,7 @@ header{
 }
 .bookmark{
   position: absolute;
-  margin-top: pxrem(-30);
+  margin-top: pxrem(-10);
 }
 
 #about-bookmark{
@@ -237,40 +237,46 @@ header{
   z-index: 300;
   width: 100%;
   padding-top: pxrem(30);
+  padding-bottom: pxrem(30);
   background-color: white;
+  border-bottom: 1px solid $color-backgroundExtraLight;
   color: $color-backgroundDark;
   text-align: center;
-  #featured-header{
-    margin-bottom: pxrem(40);
-    padding: pxrem(10);
-    border-bottom: 1px solid $color-backgroundExtraLight;
-  }
   #detail-nav{
-    margin-bottom: pxrem(20);
+    position: absolute;
+    bottom: pxrem(10);
     .current-detail{
       color: white;
       background-color: darken($color-backgroundLight, 3%);
     }
   }
-  .screen-shot{
+  #screen-shot-wrapper{
+    position: relative;
     display: inline-block;
     vertical-align: top;
+    width: 60%;
+    height: pxrem(500);
+  }
+  .screen-shot{
     overflow: hidden;
-    width: 60vw;
-    height: 40vw;
+    width: 100%;
+    height: 100%;
     border: 1px solid $color-backgroundExtraLight;
+  }
+  #sidebar{
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    width: 30%;
+    height: pxrem(500);
   }
   .detail{
     display: inline-block;;
     vertical-align: top;
-    width: 25vw;
-    height: 45vw;
-    padding: 0 5vw;
+    width: 100%;
+    height: 100%;
+    padding: 0 pxrem(10);
     text-align: left;
-    img{
-      width: 20vw;
-      height: 35vw;
-    }
   }
 }
 
@@ -278,12 +284,33 @@ header{
   position: relative;
   z-index: 200;
   width: 100%;
+  padding-top: pxrem(30);
   background-color: white;
   color: $color-backgroundDark;
+  text-align: center;
+}
+
+::-webkit-scrollbar{
+  height: pxrem(10);
+  width: pxrem(0);
+}
+::-webkit-scrollbar-track-piece{
+  background-color: $color-backgroundExtraLight;
+}
+::-webkit-scrollbar-thumb{
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  background-color: $color-backgroundLight;
+  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
 }
 
 #project-gallery{
-  width: 100%;
+  overflow: auto;
+  white-space: nowrap;
+  width: 80%;
+  height: pxrem(235);
+  margin: 0 auto;
   color: $color-backgroundDark;
   text-align: center;
   .project{
@@ -291,56 +318,46 @@ header{
     display: inline-block;
     overflow: hidden;
     vertical-align: top;
-    height: pxrem(420);
-    width: 45%;
+    height: pxrem(180);
+    width: pxrem(250);
     margin: pxrem(20);
-    margin-bottom: pxrem(40);
-    border: 1px solid $color-backgroundExtraLight;
-    cursor: pointer;
+    margin-bottom: pxrem(20);
+    border: 2px solid $color-backgroundExtraLight;
     text-align: center;
   }
 }
 
-
-.project-title{
-  position: absolute;;
-  z-index: 100;
-  width: 100%;
-  padding: pxrem(20) 0;
-  background-color: fade-out($color-backgroundDark, .25);
-  color: white;
-}
 .project-description{
-  position: absolute;
-  height: pxrem(390);
-  padding: pxrem(60) pxrem(30) 0 pxrem(30);
+  position: relative;;
+  height: 100%;
+  width: 100%;
+  margin-bottom: -15vw;
   color: white;
-  text-align: center;
   background-color: $color-backgroundExtraLight;
   background-color: $color-backgroundDark;
   opacity: 0;
   transition: opacity 0.3s linear;
-  h5{
-    margin-bottom: pxrem(50);
+  cursor: pointer;
+  .project-tech{
+    display: inline-block;
+    margin: pxrem(5);
   }
   .project-link{
     position: relative;
-    height: pxrem(40);
-    margin-top: pxrem(50);
-    padding: pxrem(10);
-    background-color: $color-backgroundLight;
-    border: 1px solid $color-backgroundExtraLight;
-    border-radius: pxrem(5);
+    display: inline-block;
+    height: pxrem(20);
+    margin-top: pxrem(40);
+    padding: pxrem(10) pxrem(5);
     color: white;
-    text-decoration: none;
   }
 }
 
 .screen-image{
-  margin-top: pxrem(60);
   width: 100%;
 }
-
+.current-project{
+  border: 3px solid $color-backgroundDark !important;
+}
 .project:hover{
   .project-description{
     opacity: .90;
