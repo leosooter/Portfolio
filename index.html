@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="portfolioApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Leo Sooter</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa|Karla|Overlock+SC" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js"></script>
+    <script src="application/app.js"></script>
+  </head>
+  <body ng-controller="projectController">
+    <header>
+      <div id="logo">
+        <h1>Leo Sooter</h1>
+      </div>
+      <ul id="nav-bar">
+        <li ng-click="goToElement('projects-bookmark')" class="nav-link">Projects</li>
+        <li ng-click="goToElement('about-bookmark')" class="nav-link">About</li>
+        <li ng-click="goToElement('contact-bookmark')" class="nav-link">Contact</li>
+      </ul>
+    </header>
+
+    <main>
+      <div id="upper-mask"></div>
+
+      <section id="intro-wrapper">
+          <div id="intro">
+            <h3>Full Stack Developer</h3>
+            <h5>Front-End Python Node.js</h5>
+            <h5 id="intro-description">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.
+            </h5>
+          </div>
+      </section>
+      <div id="center-mask"></div>
+
+      <section id="featured-wrapper">
+        <span id="projects-bookmark" class="bookmark"></span>
+        <h2 id="featured-header">Featured Project</h2>
+        <h3>{{featured.title}}</h3>
+        <ul id="detail-nav">
+          <li ng-repeat="detail in details" ng-click="changeFeaturedDetail(detail)" class="skill" ng-class="{'current-detail' : featuredDetail.title === detail.title}">{{detail.name}}</li>
+        </ul>
+        <iframe src="{{featuredIFrame}}" class="screen-shot"></iframe>
+
+        <div class="detail">
+          <h4>{{featuredDetail.title}}</h4>
+          <h5 ng-if="featuredDetail.title ==='Overview'">{{featured.description}}</h5>
+          <h5 ng-if="featuredDetail.title !='Overview'">{{featuredDetail.description}}</h5>
+          <img ng-if="featuredDetail.screenShot" src="{{featuredDetail.screenShot}}" alt="{{featuredDetail.title}} detail">
+        </div>
+
+      </section>
+
+      <section id="gallery-wrapper">
+
+        <div id="project-gallery">
+          <div class="project" ng-repeat="project in projects">
+            <h4 class="project-title">{{project.title}}</h4>
+            <div class="project-description">
+              <h5>
+                {{project.description}}
+              </h5>
+              <a class="project-link" ng-click="changeFeaturedProject(project)">View this Project</a>
+            </div>
+            <img class="screen-image" src="{{project.screenShot}}" alt="">
+          </div>
+        </div>
+      </section>
+
+      <div id="lower-mask"></div>
+
+      <section id="about-wrapper">
+        <span id="about-bookmark"  class="bookmark"></span>
+        <div id="about">
+          <img src="assets/images/profile/profile-square.jpg" alt="Profile Picture" id="profile-pic">
+          <h4>Full-Stack Development</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+            fugiat nulla pariatur.</p>
+        </div>
+        <div id="skills-wrapper">
+          <div id="skills">
+            <h3>Technologies</h3>
+            <ul class="skill-set">
+              <li ng-repeat="skill in frontEnd" ng-click="focusSkill(skill)" class="skill">{{skill.name}}</li>
+            </ul>
+            <ul class="skill-set">
+              <li ng-repeat="skill in meanStack" ng-click="focusSkill(skill)" class="skill">{{skill.name}}</li>
+            </ul>
+            <ul class="skill-set">
+              <li ng-repeat="skill in pythonStack" ng-click="focusSkill(skill)" class="skill">{{skill.name}}</li>
+            </ul>
+
+            <h3>Skills</h3>
+            <ul class="skill-set">
+              <li ng-repeat="skill in skillSet" ng-click="focusSkill(skill)" class="skill">{{skill.name}}</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <span id="contact-bookmark" class="bookmark"></span>
+
+
+        <div id="footer-contact" class="footer-info">
+          <p><img src="assets/images/icons/Github.png" alt="github icon" class="social-media-icon">Github</p>
+          <p><img src="assets/images/icons/Linkedin.png" alt="linkedin icon" class="social-media-icon">Linkedin</p>
+          <p><img src="assets/images/icons/Google+.png" alt="github icon" class="social-media-icon">Google+</p>
+          <p>leosooter@gmail.com</p>
+        </div>
+
+        <div id="footer-menu" class="footer-info">
+        </div>
+      </footer>
+    </main>
+  </body>
+</html>
