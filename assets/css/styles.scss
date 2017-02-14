@@ -69,13 +69,12 @@ $font-text: 'Karla', sans-serif;
 };
 
 //variables
-$XS:  pxrem(200);
 $S: pxrem(320);
 $SM: pxrem(500);
-$M: pxrem(750);
-$L: pxrem(960);
+$M: pxrem(750);//Break to mobile menu
+$L: pxrem(970);//Stack elements
 $XL: pxrem(1400);
-$XXL: pxrem(200);
+
 
 // Mixins
 @mixin MQ($canvas) {
@@ -97,6 +96,8 @@ $XXL: pxrem(200);
 }
 
 body{
+  width: 100%;
+  width: 100vw;
   color: white;
   font-family: sans-serif;
   overflow-x: hidden;
@@ -143,6 +144,7 @@ header{
   position: fixed;
   top: 0;
   width: 100%;
+  width: 100vw;
   height: pxrem(50);
   padding-top: pxrem(20);
   background-color: $color-backgroundLight;
@@ -179,6 +181,7 @@ header{
   position: fixed;
   height: pxrem(100);
   width: 100%;
+  width: 100vw;
   margin-top: pxrem(70);
   background: linear-gradient($color-backgroundLight, fade-out($color-backgroundLight, 1));
 }
@@ -188,6 +191,7 @@ header{
   position: relative;;
   height: pxrem(100);
   width: 100%;
+  width: 100vw;
   margin-top: pxrem(-100);
   background: linear-gradient(fade-out($color-backgroundLight, 1), $color-backgroundLight);
 }
@@ -197,6 +201,7 @@ header{
   position: relative;
   height: pxrem(100);
   width: 100%;
+  width: 100vw;
   margin-bottom: pxrem(-100);
   background: linear-gradient($color-backgroundLight, fade-out($color-backgroundLight, 1));
 }
@@ -207,6 +212,11 @@ header{
 
 #about-bookmark{
   margin-top: pxrem(20);
+}
+
+main{
+  width: 100%;
+  width: 100vw;
 }
 
 #intro-wrapper{
@@ -260,7 +270,7 @@ header{
   .screen-shot{
     overflow: hidden;
     width: 100%;
-    height: 100%;
+    //height: 100%;
     border: 1px solid $color-backgroundExtraLight;
   }
   #sidebar{
@@ -328,10 +338,9 @@ header{
 }
 
 .project-description{
-  position: relative;;
+  position: relative;
   height: 100%;
   width: 100%;
-  margin-bottom: -15vw;
   color: white;
   background-color: $color-backgroundExtraLight;
   background-color: $color-backgroundDark;
@@ -353,7 +362,10 @@ header{
 }
 
 .screen-image{
+  position: absolute;
   width: 100%;
+  top: 0;
+  left: 0;
 }
 .current-project{
   border: 3px solid $color-backgroundDark !important;
@@ -379,7 +391,7 @@ header{
 
 #about-wrapper{
   position: relative;
-  z-index: 100;
+  z-index: 80;
   height: pxrem(700);
   width: 100%;
   padding: pxrem(30);
@@ -402,7 +414,6 @@ header{
   vertical-align: top;
   width: 60%;
   padding: pxrem(50) 0;
-  background: linear-gradient($color-backgroundLight, lighten($color-backgroundLight, 5%));
 }
 
 #skills{

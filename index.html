@@ -2,6 +2,7 @@
 <html lang="en" ng-app="portfolioApp">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Leo Sooter</title>
     <link rel="stylesheet" href="assets/css/styles.css">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa|Karla|Overlock+SC" rel="stylesheet">
@@ -26,7 +27,7 @@
       <section id="intro-wrapper">
           <div id="intro">
             <h3>Full Stack Developer</h3>
-            <h5>Front-End Python Node.js</h5>
+            <h5>Front-End | Python | Node.js</h5>
             <h5 id="intro-description">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.
             </h5>
@@ -41,41 +42,18 @@
         <div id="project-gallery">
 
           <div class="project" ng-repeat="project in projects" ng-class="{'current-project' : project == featured}">
+
+            <img class="screen-image" src="{{project.thumbnail}}" alt="">
+
             <div class="project-description" ng-click="changeFeaturedProject(project)">
               <h5>{{project.title}}</h5>
               <p>
-                <span ng-repeat="technology in project.technologies" class="project-tech">{{technology}}</span>
+                <span ng-repeat="technology in project.technologies | limitTo : 3" class="project-tech">{{technology}}</span>
               </p>
               <a class="project-link" href="{{project.url}}">Project Site</a>
 
             </div>
-            <img class="screen-image" src="{{project.screenShot}}" alt="">
-          </div>
 
-          <div class="project" ng-repeat="project in projects">
-            <div class="project-description" ng-click="changeFeaturedProject(project)">
-              <h5>{{project.title}}</h5>
-              <p>
-                <span ng-repeat="technology in project.technologies" class="project-tech">{{technology}}</span>
-              </p>
-              <a class="project-link" href="{{project.url}}">Project Site</a>
-
-            </div>
-            <img class="screen-image" src="{{project.screenShot}}" alt="">
-          </div>
-
-          <div class="project" ng-repeat="project in projects">
-
-            <div class="project-description" ng-click="changeFeaturedProject(project)">
-
-              <h5>{{project.title}}</h5>
-              <p>
-                <span ng-repeat="technology in project.technologies" class="project-tech">{{technology}}</span>
-              </p>
-              <a class="project-link" href="{{project.url}}">Project Site</a>
-
-            </div>
-            <img class="screen-image" src="{{project.screenShot}}" alt="">
           </div>
 
         </div>
@@ -84,20 +62,32 @@
       <section id="featured-wrapper">
 
         <div id="screen-shot-wrapper">
-          <iframe src="{{featuredIFrame}}" class="screen-shot"></iframe>
+          <iframe ng-if="featured.iframe" src="{{featuredIFrame}}" class="screen-shot"></iframe>
+          <img ng-if="!featured.iframe" src="{{featured.screenShot}}" alt="" class="screen-shot">
         </div>
 
         <div id="sidebar">
           <h4><strong>{{featured.title}}</strong></h4>
-
           <div class="detail">
+            <h4>{{featuredDetail.title}}</h4>
+            <div ng-if="featuredDetail.title ==='Overview'">
+              <h5 ng-repeat="line in featuredDetail.description">{{line}}</h5>
+            </div>
+            <div ng-if="featuredDetail.title !='Overview'">
+                <h5 ng-repeat="line in featuredDetail.description">{{line}}</h5>
+            </div>
+            <ul id="detail-nav">
+              <li ng-repeat="detail in details" ng-click="changeFeaturedDetail(detail)" class="skill" ng-class="{'current-detail' : featuredDetail.title === detail.title}">{{detail.name}}</li>
+            </ul>
+          </div>
+          <!-- <div class="detail">
             <h4>{{featuredDetail.title}}</h4>
             <h5 ng-if="featuredDetail.title ==='Overview'">{{featured.description}}</h5>
             <h5 ng-if="featuredDetail.title !='Overview'">{{featuredDetail.description}}</h5>
             <ul id="detail-nav">
               <li ng-repeat="detail in details" ng-click="changeFeaturedDetail(detail)" class="skill" ng-class="{'current-detail' : featuredDetail.title === detail.title}">{{detail.name}}</li>
             </ul>
-          </div>
+          </div> -->
         </div>
 
       </section>
@@ -107,7 +97,7 @@
       <section id="about-wrapper">
         <span id="about-bookmark"  class="bookmark"></span>
         <div id="about">
-          <img src="assets/images/profile/profile-square.jpg" alt="Profile Picture" id="profile-pic">
+
           <h4>Full-Stack Development</h4>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
             tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -138,7 +128,9 @@
 
       <footer>
         <span id="contact-bookmark" class="bookmark"></span>
-
+        <div class="footer-info">
+          <img src="assets/images/profile/profile-square.jpg" alt="Profile Picture" id="profile-pic">
+        </div>
 
         <div id="footer-contact" class="footer-info">
           <p><img src="assets/images/icons/Github.png" alt="github icon" class="social-media-icon">Github</p>
