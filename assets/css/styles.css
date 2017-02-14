@@ -104,13 +104,19 @@ body li {
 
 header {
   z-index: 200;
-  position: fixed;
+  position: relative;
   top: 0;
   width: 100%;
   width: 100vw;
   height: 3.125rem;
   padding-top: 1.25rem;
   background-color: #257ac9;
+}
+
+@media only screen and (min-width: 46.875rem) {
+  header {
+    position: fixed;
+  }
 }
 
 header #logo {
@@ -122,9 +128,15 @@ header #logo {
 header #nav-bar {
   position: absolute;
   right: 9.375rem;
-  display: inline-block;
+  display: none;
   vertical-align: middle;
   cursor: pointer;
+}
+
+@media only screen and (min-width: 46.875rem) {
+  header #nav-bar {
+    display: inline-block;
+  }
 }
 
 header #nav-bar .nav-link {
@@ -147,6 +159,7 @@ header #nav-bar .nav-link:hover {
   pointer-events: none;
   z-index: 100;
   position: fixed;
+  display: none;
   height: 6.25rem;
   width: 100%;
   width: 100vw;
@@ -154,10 +167,17 @@ header #nav-bar .nav-link:hover {
   background: linear-gradient(#257ac9, rgba(37, 122, 201, 0));
 }
 
+@media only screen and (min-width: 46.875rem) {
+  #upper-mask {
+    display: block;
+  }
+}
+
 #center-mask {
   pointer-events: none;
   z-index: 300;
   position: relative;
+  display: none;
   height: 6.25rem;
   width: 100%;
   width: 100vw;
@@ -165,15 +185,28 @@ header #nav-bar .nav-link:hover {
   background: linear-gradient(rgba(37, 122, 201, 0), #257ac9);
 }
 
+@media only screen and (min-width: 46.875rem) {
+  #center-mask {
+    display: block;
+  }
+}
+
 #lower-mask {
   pointer-events: none;
   z-index: 300;
   position: relative;
+  display: none;
   height: 6.25rem;
   width: 100%;
   width: 100vw;
   margin-bottom: -6.25rem;
   background: linear-gradient(#257ac9, rgba(37, 122, 201, 0));
+}
+
+@media only screen and (min-width: 46.875rem) {
+  #lower-mask {
+    display: block;
+  }
 }
 
 .bookmark {
@@ -228,8 +261,8 @@ main {
 }
 
 #featured-wrapper #detail-nav {
-  position: absolute;
-  bottom: 0.625rem;
+  display: inline-block;
+  vertical-align: top;
 }
 
 #featured-wrapper #detail-nav .current-detail {
@@ -241,13 +274,21 @@ main {
   position: relative;
   display: inline-block;
   vertical-align: top;
-  width: 60%;
-  height: 31.25rem;
+  width: 100%;
+  margin-bottom: 1.25rem;
+}
+
+@media only screen and (min-width: 46.875rem) {
+  #featured-wrapper #screen-shot-wrapper {
+    width: 60%;
+  }
 }
 
 #featured-wrapper .screen-shot {
   overflow: hidden;
   width: 100%;
+  max-width: 50rem;
+  max-height: 29.375rem;
   border: 1px solid #d2e6f9;
 }
 
@@ -255,13 +296,17 @@ main {
   position: relative;
   display: inline-block;
   vertical-align: top;
-  width: 30%;
-  height: 31.25rem;
+  width: 100%;
+  min-height: 12.5rem;
+}
+
+@media only screen and (min-width: 46.875rem) {
+  #featured-wrapper #sidebar {
+    width: 30%;
+  }
 }
 
 #featured-wrapper .detail {
-  display: inline-block;
-  vertical-align: top;
   width: 100%;
   height: 100%;
   padding: 0 0.625rem;
@@ -298,11 +343,17 @@ main {
 #project-gallery {
   overflow: auto;
   white-space: nowrap;
-  width: 80%;
+  width: 100%;
   height: 14.6875rem;
   margin: 0 auto;
   color: #296194;
   text-align: center;
+}
+
+@media only screen and (min-width: 46.875rem) {
+  #project-gallery {
+    width: 80%;
+  }
 }
 
 #project-gallery .project {
@@ -344,7 +395,7 @@ main {
   color: white;
 }
 
-.screen-image {
+.thumbnail {
   position: absolute;
   width: 100%;
   top: 0;
@@ -379,15 +430,28 @@ main {
   z-index: 80;
   height: 43.75rem;
   width: 100%;
-  padding: 1.875rem;
+  padding-bottom: 5rem;
   background: linear-gradient(#257ac9, #2f87d9);
+}
+
+@media only screen and (min-width: 46.875rem) {
+  #about-wrapper {
+    padding: 1.875rem;
+  }
 }
 
 #about {
   display: inline-block;
   vertical-align: top;
-  width: 30%;
-  margin: 6.25rem 1.875rem 0 1.875rem;
+  width: 90%;
+  margin: 1.25rem 0.625rem;
+}
+
+@media only screen and (min-width: 46.875rem) {
+  #about {
+    width: 30%;
+    margin: 5.625rem 1.875rem;
+  }
 }
 
 #about #profile-pic {
@@ -399,17 +463,30 @@ main {
 #skills-wrapper {
   display: inline-block;
   vertical-align: top;
-  width: 60%;
-  padding: 3.125rem 0;
+  width: 100%;
+  margin-top: 1.25rem;
+}
+
+@media only screen and (min-width: 46.875rem) {
+  #skills-wrapper {
+    width: 60%;
+    margin-top: 3.125rem;
+  }
 }
 
 #skills {
-  width: 70%;
+  width: 100%;
   max-width: 62.5rem;
   margin: 0 auto;
-  margin-top: 4.375rem;
-  padding: 2.5rem;
+  padding: 0;
   text-align: center;
+}
+
+@media only screen and (min-width: 46.875rem) {
+  #skills {
+    padding: 2.5rem;
+    width: 70%;
+  }
 }
 
 #skills #skills-description {
@@ -420,12 +497,19 @@ main {
 }
 
 #skills .skill-set {
-  margin-bottom: 2.5rem;
+  margin-bottom: 0.625rem;
   cursor: pointer;
 }
 
+@media only screen and (min-width: 31.25rem) {
+  #skills .skill-set {
+    margin-bottom: 2.5rem;
+  }
+}
+
 .skill {
-  display: inline;
+  display: inline-block;
+  vertical-align: top;
   position: relative;
   margin: 0.375rem;
   padding: 0.3125rem;

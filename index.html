@@ -2,7 +2,7 @@
 <html lang="en" ng-app="portfolioApp">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Leo Sooter</title>
     <link rel="stylesheet" href="assets/css/styles.css">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa|Karla|Overlock+SC" rel="stylesheet">
@@ -43,7 +43,7 @@
 
           <div class="project" ng-repeat="project in projects" ng-class="{'current-project' : project == featured}">
 
-            <img class="screen-image" src="{{project.thumbnail}}" alt="">
+            <img class="thumbnail" src="{{project.thumbnail}}" alt="">
 
             <div class="project-description" ng-click="changeFeaturedProject(project)">
               <h5>{{project.title}}</h5>
@@ -76,10 +76,9 @@
             <div ng-if="featuredDetail.title !='Overview'">
                 <h5 ng-repeat="line in featuredDetail.description">{{line}}</h5>
             </div>
-            <ul id="detail-nav">
-              <li ng-repeat="detail in details" ng-click="changeFeaturedDetail(detail)" class="skill" ng-class="{'current-detail' : featuredDetail.title === detail.title}">{{detail.name}}</li>
-            </ul>
+
           </div>
+
           <!-- <div class="detail">
             <h4>{{featuredDetail.title}}</h4>
             <h5 ng-if="featuredDetail.title ==='Overview'">{{featured.description}}</h5>
@@ -89,6 +88,9 @@
             </ul>
           </div> -->
         </div>
+        <ul id="detail-nav">
+          <li ng-repeat="detail in details" ng-click="changeFeaturedDetail(detail)" class="skill" ng-class="{'current-detail' : featuredDetail.title === detail.title}">{{detail.name}}</li>
+        </ul>
 
       </section>
 

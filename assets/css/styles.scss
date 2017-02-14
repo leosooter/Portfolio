@@ -141,7 +141,10 @@ body{
 
 header{
   z-index: 200;
-  position: fixed;
+  position: relative;
+  @include MQ(Mplus){
+    position: fixed;
+  }
   top: 0;
   width: 100%;
   width: 100vw;
@@ -156,7 +159,10 @@ header{
   #nav-bar{
     position: absolute;
     right: pxrem(150);
-    display: inline-block;
+    display: none;
+    @include MQ(Mplus){
+      display: inline-block;
+    }
     vertical-align: middle;
     cursor: pointer;
     .nav-link{
@@ -179,6 +185,10 @@ header{
   pointer-events: none;
   z-index: 100;
   position: fixed;
+  display: none;
+  @include MQ(Mplus){
+    display: block;
+  }
   height: pxrem(100);
   width: 100%;
   width: 100vw;
@@ -188,7 +198,11 @@ header{
 #center-mask{
   pointer-events: none;
   z-index: 300;
-  position: relative;;
+  position: relative;
+  display: none;
+  @include MQ(Mplus){
+    display: block;
+  }
   height: pxrem(100);
   width: 100%;
   width: 100vw;
@@ -199,6 +213,10 @@ header{
   pointer-events: none;
   z-index: 300;
   position: relative;
+  display: none;
+  @include MQ(Mplus){
+    display: block;
+  }
   height: pxrem(100);
   width: 100%;
   width: 100vw;
@@ -253,8 +271,8 @@ main{
   color: $color-backgroundDark;
   text-align: center;
   #detail-nav{
-    position: absolute;
-    bottom: pxrem(10);
+    display: inline-block;
+    vertical-align: top;
     .current-detail{
       color: white;
       background-color: darken($color-backgroundLight, 3%);
@@ -264,25 +282,30 @@ main{
     position: relative;
     display: inline-block;
     vertical-align: top;
-    width: 60%;
-    height: pxrem(500);
+    width: 100%;
+    @include MQ(Mplus){
+      width: 60%;
+    }
+    margin-bottom: pxrem(20);
   }
   .screen-shot{
     overflow: hidden;
     width: 100%;
-    //height: 100%;
+    max-width: pxrem(800);
+    max-height: pxrem(470);
     border: 1px solid $color-backgroundExtraLight;
   }
   #sidebar{
     position: relative;
     display: inline-block;
     vertical-align: top;
-    width: 30%;
-    height: pxrem(500);
+    width: 100%;
+    @include MQ(Mplus){
+      width: 30%;
+    }
+    min-height: pxrem(200);
   }
   .detail{
-    display: inline-block;;
-    vertical-align: top;
     width: 100%;
     height: 100%;
     padding: 0 pxrem(10);
@@ -318,7 +341,10 @@ main{
 #project-gallery{
   overflow: auto;
   white-space: nowrap;
-  width: 80%;
+  width: 100%;
+  @include MQ(Mplus){
+    width: 80%;
+  }
   height: pxrem(235);
   margin: 0 auto;
   color: $color-backgroundDark;
@@ -361,7 +387,7 @@ main{
   }
 }
 
-.screen-image{
+.thumbnail{
   position: absolute;
   width: 100%;
   top: 0;
@@ -394,14 +420,22 @@ main{
   z-index: 80;
   height: pxrem(700);
   width: 100%;
-  padding: pxrem(30);
+  padding-bottom: pxrem(80);
+  @include MQ(Mplus){
+    padding: pxrem(30);
+  }
   background: linear-gradient($color-backgroundLight, lighten($color-backgroundLight, 5%));
 }
 #about{
   display: inline-block;
   vertical-align: top;
-  width: 30%;
-  margin: pxrem(100) pxrem(30) 0 pxrem(30);
+  width: 90%;
+  margin: pxrem(20) pxrem(10);
+  @include MQ(Mplus){
+    width: 30%;
+    margin: pxrem(90) pxrem(30);
+  }
+
   #profile-pic{
     height: pxrem(200);
     width: pxrem(200);
@@ -412,17 +446,27 @@ main{
 #skills-wrapper{
   display: inline-block;
   vertical-align: top;
-  width: 60%;
-  padding: pxrem(50) 0;
+  width: 100%;
+  margin-top: pxrem(20);
+  @include MQ(Mplus){
+    width: 60%;
+    margin-top: pxrem(50);
+  }
 }
 
 #skills{
-  width: 70%;
+  width: 100%;
   max-width: pxrem(1000);
   margin: 0 auto;
-  margin-top: pxrem(70);
-  padding: pxrem(40);
+  //margin-top: pxrem(20);
+  padding: 0;
   text-align: center;
+  @include MQ(Mplus){
+    padding: pxrem(40);
+    width: 70%;
+    //margin-top: pxrem(70);
+  }
+
   #skills-description{
     width: 100%;
     max-width: pxrem(500);
@@ -430,13 +474,17 @@ main{
     margin-bottom: pxrem(40);
   }
   .skill-set{
-    margin-bottom: pxrem(40);
+    margin-bottom: pxrem(10);
     cursor: pointer;
+    @include MQ(SMplus){
+      margin-bottom: pxrem(40);
+    }
   }
 }
 
 .skill{
-  display: inline;
+  display: inline-block;;
+  vertical-align: top;
   position: relative;
   margin: pxrem(6);
   padding: pxrem(5);
@@ -451,6 +499,7 @@ main{
 footer{
   width: 100%;
   height: pxrem(400);
+  //margin-top: pxrem(70);
   padding: pxrem(50);
   background-color: $color-backgroundDark;
 }
