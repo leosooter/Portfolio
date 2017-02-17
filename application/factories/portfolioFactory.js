@@ -9,7 +9,7 @@ portfolioApp.factory("projectFactory", [function(){
   var algoApp = {
     name : 'algoApp',
     title : 'Algorithm Challenge',
-    repoUrl : null,
+    repoUrl : 'https://github.com/leosooter/Algo-Challenge',
     liveUrl : null,
     // iframe : false,
     screenShot : 'assets/images/projects/algo-app/chart.png',
@@ -215,6 +215,21 @@ portfolioApp.factory("projectFactory", [function(){
       overview,
     ],
   };
+
+  var djangoProject = {
+    name : 'Django',
+    title : 'Django',
+    repoUrl : 'https://github.com/CodingDojoOnline-Python-2/LeoSooter/tree/master/Week7/LoginReg',
+    liveUrl : null,
+    //iframe : false,
+    screenShot : 'assets/images/projects/django-project/main.png',
+    thumbnail : 'assets/images/projects/django-project/main.png',
+    description : [`I am currently working on deploying a Django project for the portfolio but it still a work in progress`, `If you would like to see the source code for a basic Django app with form-validations and templating, you can visit the Repo below on Github.`],
+    technologies : ['Django', 'Python', 'SQL'],
+    details : [
+      overview,
+    ],
+  };
   ///////////////////////frontEnd
   var html5Skill = {
     name : "HTML5",
@@ -256,7 +271,7 @@ portfolioApp.factory("projectFactory", [function(){
   };
   var djangoSkill = {
     name : "Django",
-    projects : [digitalReserve],
+    projects : [djangoProject],
   };
   var sqlSkill = {
     name : "SQL",
