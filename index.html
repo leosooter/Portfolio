@@ -8,29 +8,36 @@
     <link href="https://fonts.googleapis.com/css?family=Comfortaa|Karla|Overlock+SC" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js"></script>
     <script src="application/app.js"></script>
+    <script src="application/services/anchorScroll.js"></script>
+    <script src="application/factories/portfolioFactory.js"></script>
+    <script src="application/controllers/portfolioController.js"></script>
   </head>
   <body ng-controller="projectController">
     <header>
-      <div id="logo">
-        <h1>Leo Sooter</h1>
+      <div id="logo-nav-wrapper">
+        <div id="logo">
+          <h1>Leo Sooter</h1>
+        </div>
+        <ul id="nav-bar">
+          <li ng-click="goToElement('projects-bookmark')" class="nav-link">Projects</li>
+          <li ng-click="goToElement('about-bookmark')" class="nav-link">About</li>
+          <li ng-click="goToElement('contact-bookmark')" class="nav-link">Contact</li>
+        </ul>
       </div>
-      <ul id="nav-bar">
-        <li ng-click="goToElement('projects-bookmark')" class="nav-link">Projects</li>
-        <li ng-click="goToElement('about-bookmark')" class="nav-link">About</li>
-        <li ng-click="goToElement('contact-bookmark')" class="nav-link">Contact</li>
-      </ul>
     </header>
+    <div id="header-image-wrapper">
+      <div id="header-image"></div>
+    </div>
 
     <main>
       <div id="upper-mask"></div>
 
       <section id="intro-wrapper">
           <div id="intro">
-            <h3>Full Stack Developer</h3>
-            <h5>Front-End | Python | Node.js</h5>
-            <h5 id="intro-description">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.
-            </h5>
+            <h3>Full Stack Development</h3>
+            <h5>Welcome to my portfolio.</h5>
+            <h5 id="intro-description">I am an entry level Full-Stack developer, trained in building REST APIs, Single-page MVC Apps and Responsive Websites.</h5>
+            <h5>Front-End | Node.js | Python</h5>
           </div>
       </section>
 
@@ -50,8 +57,6 @@
               <p>
                 <span ng-repeat="technology in project.technologies | limitTo : 3" class="project-tech">{{technology}}</span>
               </p>
-              <a class="project-link" href="{{project.url}}">Project Site</a>
-
             </div>
 
           </div>
@@ -60,36 +65,31 @@
       </section>
 
       <section id="featured-wrapper">
-
+        <span id="featured-bookmark"  class="bookmark"></span>
         <div id="screen-shot-wrapper">
-          <iframe ng-if="featured.iframe" src="{{featuredIFrame}}" class="screen-shot"></iframe>
-          <img ng-if="!featured.iframe" src="{{featured.screenShot}}" alt="" class="screen-shot">
+          <!-- <iframe ng-if="featured.iframe" src="{{featuredIFrame}}" class="screen-shot"></iframe> -->
+          <img ng-cloak="" ng-if="!featuredDetail.screenShot" src="{{featured.screenShot}}" alt="" class="screen-shot">
+          <img ng-cloak="" ng-if="featuredDetail.screenShot" src="{{featuredDetail.screenShot}}" alt="" class="screen-shot">
         </div>
 
         <div id="sidebar">
           <h4><strong>{{featured.title}}</strong></h4>
           <div class="detail">
             <h4>{{featuredDetail.title}}</h4>
+            <!-- <h3>Description: {{featured.description[0]}}</h3> -->
             <div ng-if="featuredDetail.title ==='Overview'">
-              <h5 ng-repeat="line in featuredDetail.description">{{line}}</h5>
+              <h5 ng-repeat="line in featured.description">{{line}}</h5>
             </div>
             <div ng-if="featuredDetail.title !='Overview'">
                 <h5 ng-repeat="line in featuredDetail.description">{{line}}</h5>
             </div>
-
           </div>
-
-          <!-- <div class="detail">
-            <h4>{{featuredDetail.title}}</h4>
-            <h5 ng-if="featuredDetail.title ==='Overview'">{{featured.description}}</h5>
-            <h5 ng-if="featuredDetail.title !='Overview'">{{featuredDetail.description}}</h5>
-            <ul id="detail-nav">
-              <li ng-repeat="detail in details" ng-click="changeFeaturedDetail(detail)" class="skill" ng-class="{'current-detail' : featuredDetail.title === detail.title}">{{detail.name}}</li>
-            </ul>
-          </div> -->
         </div>
+
         <ul id="detail-nav">
           <li ng-repeat="detail in details" ng-click="changeFeaturedDetail(detail)" class="skill" ng-class="{'current-detail' : featuredDetail.title === detail.title}">{{detail.name}}</li>
+          <li class="project-link"><a ng-if="featured.liveUrl" href="{{featured.liveUrl}}">Visit this Site</a></li>
+          <li class="project-link"><a ng-if="featured.repoUrl" href="{{featured.repoUrl}}">See the Github Repo</a></li>
         </ul>
 
       </section>
@@ -100,29 +100,37 @@
         <span id="about-bookmark"  class="bookmark"></span>
         <div id="about">
 
-          <h4>Full-Stack Development</h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-            fugiat nulla pariatur.</p>
+          <h4>About Me</h4>
+          <p>I am a native Washingtonian, born and raised in the San Juan Islands, and a graduate of the University of Washington.</p>
+          <p>After spending 4 years as a stay-at-home father I started self-training for a career in web development.  I spent a year learning front-end technologies and then attended an online bootcamp through <a href="http://www.codingdojo.com/online-bootcamp">Coding Dojo</a> to learn full-stack development in Node.js and Python.</p>
+          <p>I love the freedom and creativity of coding and the endless opportunities to learn new skills and technologies.</p>
+          <p>I enjoy hiking, kayaking and birdwatching with my family. I am also passionate about wildlife conservation and I have worked for years as a volunteer with serveral conservation organizations in Africa.</p>
         </div>
         <div id="skills-wrapper">
           <div id="skills">
             <h3>Technologies</h3>
+            <p>Click any of the technologies below to view related projects</p>
             <ul class="skill-set">
-              <li ng-repeat="skill in frontEnd" ng-click="focusSkill(skill)" class="skill">{{skill.name}}</li>
+              <li ng-repeat="skill in frontEnd" ng-click="focusSkill(skill)" class="skill">{{skill.name}}
+                <!-- <span class="tooltiptext">View Projects</span> -->
+              </li>
             </ul>
             <ul class="skill-set">
-              <li ng-repeat="skill in meanStack" ng-click="focusSkill(skill)" class="skill">{{skill.name}}</li>
+              <li ng-repeat="skill in meanStack" ng-click="focusSkill(skill)" class="skill">{{skill.name}}
+                <!-- <span class="tooltiptext">View Projects</span> -->
+              </li>
             </ul>
             <ul class="skill-set">
-              <li ng-repeat="skill in pythonStack" ng-click="focusSkill(skill)" class="skill">{{skill.name}}</li>
+              <li ng-repeat="skill in pythonStack" ng-click="focusSkill(skill)" class="skill">{{skill.name}}
+                <!-- <span class="tooltiptext">View Projects</span> -->
+              </li>
             </ul>
 
             <h3>Skills</h3>
             <ul class="skill-set">
-              <li ng-repeat="skill in skillSet" ng-click="focusSkill(skill)" class="skill">{{skill.name}}</li>
+              <li ng-repeat="skill in skillSet" ng-click="focusSkill(skill)" class="skill">{{skill.name}}
+                <!-- <span class="tooltiptext">View Projects</span> -->
+              </li>
             </ul>
           </div>
         </div>
@@ -130,18 +138,15 @@
 
       <footer>
         <span id="contact-bookmark" class="bookmark"></span>
-        <div class="footer-info">
-          <img src="assets/images/profile/profile-square.jpg" alt="Profile Picture" id="profile-pic">
-        </div>
 
         <div id="footer-contact" class="footer-info">
-          <p><img src="assets/images/icons/Github.png" alt="github icon" class="social-media-icon">Github</p>
-          <p><img src="assets/images/icons/Linkedin.png" alt="linkedin icon" class="social-media-icon">Linkedin</p>
-          <p><img src="assets/images/icons/Google+.png" alt="github icon" class="social-media-icon">Google+</p>
-          <p>leosooter@gmail.com</p>
+          <p><img src="assets/images/icons/Github.png" alt="github icon" class="social-media-icon">Visit my <a href="https://github.com/leosooter">Github</a> account to see more projects and code.</p>
+          <p><img src="assets/images/icons/Linkedin.png" alt="linkedin icon" class="social-media-icon">View my <a href="https://www.linkedin.com/in/leo-sooter-6b6339a/">Linkedin</a> page</p>
+          <p><img src="assets/images/icons/Email.png" alt="github icon" class="social-media-icon"><a href="mailto:leosooter@gmail.com">leosooter@gmail.com</a></p>
         </div>
 
-        <div id="footer-menu" class="footer-info">
+        <div id="footer-resume" class="footer-info">
+          <p>View or download my <a href="https://dl.dropboxusercontent.com/u/29321420/Leo%20Sooter%20Resume.pdf" target="blank">resume</a></p>
         </div>
       </footer>
     </main>

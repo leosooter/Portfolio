@@ -85,14 +85,14 @@ body h4 {
 }
 
 body h5 {
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   font-family: "Karla", sans-serif;
   line-height: 1.5;
   margin-bottom: 1.25rem;
 }
 
 body p {
-  font-size: 1rem;
+  font-size: 1.125rem;
   font-family: "Karla", sans-serif;
   line-height: 1.5;
 }
@@ -110,6 +110,7 @@ header {
   width: 100vw;
   height: 3.125rem;
   padding-top: 1.25rem;
+  padding-bottom: 1.875rem;
   background-color: #257ac9;
 }
 
@@ -119,27 +120,38 @@ header {
   }
 }
 
-header #logo {
+#logo-nav-wrapper #logo {
   display: inline-block;
   vertical-align: middle;
-  margin-left: 3.125rem;
+  margin-left: 1.25rem;
 }
 
-header #nav-bar {
+@media only screen and (min-width: 87.5rem) {
+  #logo-nav-wrapper #logo {
+    margin-left: 3.125rem;
+  }
+}
+
+#logo-nav-wrapper #nav-bar {
   position: absolute;
-  right: 9.375rem;
+  right: 3.125rem;
   display: none;
   vertical-align: middle;
-  cursor: pointer;
+}
+
+@media only screen and (min-width: 87.5rem) {
+  #logo-nav-wrapper #nav-bar {
+    right: 9.375rem;
+  }
 }
 
 @media only screen and (min-width: 46.875rem) {
-  header #nav-bar {
+  #logo-nav-wrapper #nav-bar {
     display: inline-block;
   }
 }
 
-header #nav-bar .nav-link {
+#logo-nav-wrapper #nav-bar .nav-link {
   height: 1.25rem;
   width: 5rem;
   margin-left: 1.25rem;
@@ -148,11 +160,39 @@ header #nav-bar .nav-link {
   transition: border-bottom 0.3s linear;
   text-decoration: none;
   color: white;
+  cursor: pointer;
 }
 
-header #nav-bar .nav-link:hover {
+#logo-nav-wrapper #nav-bar .nav-link:hover {
   border-bottom: 2px solid #296194;
   color: #d2e6f9;
+}
+
+#header-image-wrapper {
+  position: relative;
+  z-index: 500;
+  margin-top: -0.625rem;
+  display: none;
+}
+
+@media only screen and (min-width: 60.625rem) {
+  #header-image-wrapper {
+    display: block;
+  }
+}
+
+#header-image-wrapper #header-image {
+  position: absolute;
+  height: 12.5rem;
+  width: 12.5rem;
+  top: 50%;
+  left: 50%;
+  margin-top: 2.5rem;
+  margin-left: -6.25rem;
+  border: 2px solid white;
+  border-radius: 50%;
+  background-size: cover;
+  background-image: url("../images/profile/profile-square.jpg");
 }
 
 #upper-mask {
@@ -163,13 +203,19 @@ header #nav-bar .nav-link:hover {
   height: 6.25rem;
   width: 100%;
   width: 100vw;
-  margin-top: 4.375rem;
+  margin-top: 6.25rem;
   background: linear-gradient(#257ac9, rgba(37, 122, 201, 0));
 }
 
 @media only screen and (min-width: 46.875rem) {
   #upper-mask {
     display: block;
+  }
+}
+
+@media only screen and (min-width: 60.625rem) {
+  #upper-mask {
+    margin-top: 6.875rem;
   }
 }
 
@@ -215,7 +261,11 @@ header #nav-bar .nav-link:hover {
 }
 
 #about-bookmark {
-  margin-top: 1.25rem;
+  margin-top: -4.375rem;
+}
+
+#featured-bookmark {
+  margin-top: -1.875rem;
 }
 
 main {
@@ -227,9 +277,14 @@ main {
   display: inline-block;
   vertical-align: top;
   width: 100%;
-  height: 25rem;
-  padding: 3.125rem 0;
+  padding: 1.25rem 0 1.875rem 0;
   background: linear-gradient(#257ac9, #2f87d9);
+}
+
+@media only screen and (min-width: 46.875rem) {
+  #intro-wrapper {
+    padding-top: 11.875rem;
+  }
 }
 
 #intro {
@@ -243,7 +298,7 @@ main {
 
 #intro #intro-description {
   width: 100%;
-  max-width: 31.25rem;
+  max-width: 28.125rem;
   margin: 0 auto;
   margin-bottom: 2.5rem;
 }
@@ -263,6 +318,7 @@ main {
 #featured-wrapper #detail-nav {
   display: inline-block;
   vertical-align: top;
+  margin-top: 1.25rem;
 }
 
 #featured-wrapper #detail-nav .current-detail {
@@ -272,13 +328,15 @@ main {
 
 #featured-wrapper #screen-shot-wrapper {
   position: relative;
+  overflow: hidden;
   display: inline-block;
   vertical-align: top;
   width: 100%;
+  max-height: 29.375rem;
   margin-bottom: 1.25rem;
 }
 
-@media only screen and (min-width: 46.875rem) {
+@media only screen and (min-width: 60.625rem) {
   #featured-wrapper #screen-shot-wrapper {
     width: 60%;
   }
@@ -287,8 +345,8 @@ main {
 #featured-wrapper .screen-shot {
   overflow: hidden;
   width: 100%;
+  height: auto;
   max-width: 50rem;
-  max-height: 29.375rem;
   border: 1px solid #d2e6f9;
 }
 
@@ -296,13 +354,16 @@ main {
   position: relative;
   display: inline-block;
   vertical-align: top;
-  width: 100%;
+  width: 90%;
   min-height: 12.5rem;
+  padding: 0.625rem;
 }
 
-@media only screen and (min-width: 46.875rem) {
+@media only screen and (min-width: 60.625rem) {
   #featured-wrapper #sidebar {
+    overflow-y: auto;
     width: 30%;
+    max-height: 32.5rem;
   }
 }
 
@@ -311,6 +372,28 @@ main {
   height: 100%;
   padding: 0 0.625rem;
   text-align: left;
+}
+
+.project-link {
+  position: relative;
+  height: 1.25rem;
+  margin-left: 3.75rem;
+  top: 0.625rem;
+  border-bottom: 2px solid #257ac9;
+  transition: border-bottom 0.3s linear;
+}
+
+.project-link a {
+  text-decoration: none;
+  color: #257ac9;
+}
+
+.project-link:hover {
+  border-bottom: 2px solid #296194;
+}
+
+.project-link:hover a {
+  color: #296194;
 }
 
 #gallery-wrapper {
@@ -323,16 +406,16 @@ main {
   text-align: center;
 }
 
-::-webkit-scrollbar {
+#gallery-wrapper ::-webkit-scrollbar {
   height: 0.625rem;
   width: 0rem;
 }
 
-::-webkit-scrollbar-track-piece {
+#gallery-wrapper ::-webkit-scrollbar-track-piece {
   background-color: #d2e6f9;
 }
 
-::-webkit-scrollbar-thumb {
+#gallery-wrapper ::-webkit-scrollbar-thumb {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
@@ -386,15 +469,6 @@ main {
   margin: 0.3125rem;
 }
 
-.project-description .project-link {
-  position: relative;
-  display: inline-block;
-  height: 1.25rem;
-  margin-top: 2.5rem;
-  padding: 0.625rem 0.3125rem;
-  color: white;
-}
-
 .thumbnail {
   position: absolute;
   width: 100%;
@@ -410,60 +484,61 @@ main {
   opacity: .90;
 }
 
-#digital-reserve {
-  background-size: cover;
-  background-image: url("../images/projects/digital-reserve/widescreen.png");
-}
-
-#jetfighter {
-  background-size: cover;
-  background-image: url("../images/projects/jetfighter/jetfighter.png");
-}
-
-#blackjack {
-  background-size: cover;
-  background-image: url("../images/projects/blackjack/main.png");
-}
-
 #about-wrapper {
   position: relative;
   z-index: 80;
-  height: 43.75rem;
   width: 100%;
-  padding-bottom: 5rem;
+  padding: 1.875rem;
   background: linear-gradient(#257ac9, #2f87d9);
 }
 
 @media only screen and (min-width: 46.875rem) {
   #about-wrapper {
-    padding: 1.875rem;
+    padding-top: 7.5rem;
   }
 }
 
 #about {
   display: inline-block;
   vertical-align: top;
-  width: 90%;
+  width: 80%;
   margin: 1.25rem 0.625rem;
 }
 
-@media only screen and (min-width: 46.875rem) {
+@media only screen and (min-width: 60.625rem) {
   #about {
     width: 30%;
     margin: 5.625rem 1.875rem;
   }
 }
 
-#about #profile-pic {
-  height: 12.5rem;
-  width: 12.5rem;
+#about p {
+  margin-bottom: 0.625rem;
+}
+
+#about a {
+  font-size: 1.125rem;
+  text-decoration: none;
+  color: #e6e6e6;
+  border-bottom: 2px solid #a5cdf3;
+}
+
+#about a:hover {
+  color: #a5cdf3;
+  border-bottom: 2px solid #78b4ed;
+}
+
+#profile-pic {
+  display: inline-block;
+  height: 6.25rem;
+  width: 6.25rem;
   border-radius: 50%;
 }
 
 #skills-wrapper {
   display: inline-block;
   vertical-align: top;
-  width: 100%;
+  width: 90%;
   margin-top: 1.25rem;
 }
 
@@ -479,14 +554,20 @@ main {
   max-width: 62.5rem;
   margin: 0 auto;
   padding: 0;
-  text-align: center;
+  text-align: left;
 }
 
 @media only screen and (min-width: 46.875rem) {
   #skills {
+    text-align: center;
     padding: 2.5rem;
     width: 70%;
   }
+}
+
+#skills p {
+  margin-bottom: 1.25rem;
+  color: #9bc5ed;
 }
 
 #skills #skills-description {
@@ -515,6 +596,8 @@ main {
   padding: 0.3125rem;
   border: 1px solid #296194;
   border-radius: 0.3125rem;
+  cursor: pointer;
+  transition: background-color 0.2s linear, color 0.1s linear;
 }
 
 .skill:hover {
@@ -524,22 +607,23 @@ main {
 
 footer {
   width: 100%;
-  height: 25rem;
   padding: 3.125rem;
+  padding-top: 6.25rem;
   background-color: #296194;
 }
 
 .footer-info {
-  display: inline-block;
+  display: block;
+  width: 70%;
   vertical-align: top;
-  width: 25rem;
-  margin: 0 1.875rem;
+  margin: 2.5rem 1.875rem;
 }
 
-.footer-info #profile-pic {
-  height: 12.5rem;
-  width: 12.5rem;
-  border-radius: 50%;
+@media only screen and (min-width: 46.875rem) {
+  .footer-info {
+    display: inline-block;
+    width: 45%;
+  }
 }
 
 .footer-info .social-media-icon {
@@ -551,11 +635,19 @@ footer {
   border-radius: 50%;
 }
 
-#footer-contact {
-  margin-top: 2.5rem;
+.footer-info a {
+  font-size: 1.125rem;
+  text-decoration: none;
+  color: #a5cdf3;
+  border-bottom: 2px solid #a5cdf3;
 }
 
-iframe {
-  height: 31.25rem;
-  width: 100%;
+.footer-info a:hover {
+  color: #78b4ed;
+  border-bottom: 2px solid #78b4ed;
+}
+
+#footer-resume {
+  padding-top: 0.9375rem;
+  width: 25%;
 }

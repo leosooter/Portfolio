@@ -69,10 +69,10 @@ $font-text: 'Karla', sans-serif;
 };
 
 //variables
-$S: pxrem(320);
+$S: pxrem(450);
 $SM: pxrem(500);
-$M: pxrem(750);//Break to mobile menu
-$L: pxrem(970);//Stack elements
+$M: pxrem(750);
+$L: pxrem(970);
 $XL: pxrem(1400);
 
 
@@ -122,22 +122,22 @@ body{
     margin-bottom: pxrem(20)
   }
   h5{
-    font-size: pxrem(20);
+    font-size: pxrem(18);
     font-family: $font-text;
     line-height: 1.5;
     margin-bottom: pxrem(20)
   }
   p{
-    font-size: pxrem(16);
+    font-size: pxrem(18);
     font-family: $font-text;
     line-height: 1.5;
-
   }
   li{
     display: inline-block;
     text-align: center;
   }
 }
+// Header section //////////////////////////////////////////////////////////////
 
 header{
   z-index: 200;
@@ -150,21 +150,31 @@ header{
   width: 100vw;
   height: pxrem(50);
   padding-top: pxrem(20);
+  padding-bottom: pxrem(30);
   background-color: $color-backgroundLight;
+}
+
+#logo-nav-wrapper{
   #logo{
     display: inline-block;
     vertical-align: middle;
-    margin-left: pxrem(50);
+    margin-left: pxrem(20);
+    @include MQ(XLplus){
+      margin-left: pxrem(50);
+    }
   }
+
   #nav-bar{
     position: absolute;
-    right: pxrem(150);
+    right: pxrem(50);
+    @include MQ(XLplus){
+      right: pxrem(150);
+    }
     display: none;
     @include MQ(Mplus){
       display: inline-block;
     }
     vertical-align: middle;
-    cursor: pointer;
     .nav-link{
       height: pxrem(20);
       width: pxrem(80);
@@ -174,6 +184,7 @@ header{
       transition: border-bottom 0.3s linear;
       text-decoration: none;
       color: white;
+      cursor: pointer;
     }
     .nav-link:hover{
       border-bottom: 2px solid $color-backgroundDark;
@@ -181,6 +192,31 @@ header{
     }
   }
 }
+#header-image-wrapper{
+  position: relative;;
+  z-index: 500;
+  margin-top: pxrem(-10);
+  display: none;
+  @include MQ(Lplus){
+    display: block;
+  }
+  #header-image{
+    position: absolute;
+    height: pxrem(200);
+    width: pxrem(200);
+    top: 50%;
+    left: 50%;
+    margin-top: pxrem(40);
+    margin-left: pxrem(-100);
+    border: 2px solid white;
+    border-radius: 50%;
+    background-size: cover;
+    background-image: url('../images/profile/profile-square.jpg');
+  }
+}
+
+
+// Masking  ////////////////////////////////////////////////////////////////////
 #upper-mask{
   pointer-events: none;
   z-index: 100;
@@ -192,7 +228,10 @@ header{
   height: pxrem(100);
   width: 100%;
   width: 100vw;
-  margin-top: pxrem(70);
+  margin-top: pxrem(100);
+  @include MQ(Lplus){
+    margin-top: pxrem(110);
+  }
   background: linear-gradient($color-backgroundLight, fade-out($color-backgroundLight, 1));
 }
 #center-mask{
@@ -229,20 +268,27 @@ header{
 }
 
 #about-bookmark{
-  margin-top: pxrem(20);
+  margin-top: pxrem(-70);
+}
+
+#featured-bookmark{
+  margin-top: pxrem(-30);
 }
 
 main{
   width: 100%;
   width: 100vw;
 }
-
+// Welcome section /////////////////////////////////////////////////////////////
 #intro-wrapper{
   display: inline-block;
   vertical-align: top;
   width: 100%;
-  height: pxrem(400);
-  padding: pxrem(50) 0;
+  //height: pxrem(300);
+  padding: pxrem(20) 0 pxrem(30) 0;
+  @include MQ(Mplus){
+    padding-top: pxrem(190);
+  }
   background: linear-gradient($color-backgroundLight, lighten($color-backgroundLight, 5%));
 }
 #intro{
@@ -254,12 +300,15 @@ main{
   text-align: center;
   #intro-description{
     width: 100%;
-    max-width: pxrem(500);
+    max-width: pxrem(450);
     margin: 0 auto;
     margin-bottom: pxrem(40);
   }
 }
 
+
+
+// Featured- section    ////////////////////////////////////////////////////////
 #featured-wrapper{
   position: relative;
   z-index: 300;
@@ -273,6 +322,7 @@ main{
   #detail-nav{
     display: inline-block;
     vertical-align: top;
+    margin-top: pxrem(20);
     .current-detail{
       color: white;
       background-color: darken($color-backgroundLight, 3%);
@@ -280,10 +330,12 @@ main{
   }
   #screen-shot-wrapper{
     position: relative;
+    overflow: hidden;
     display: inline-block;
     vertical-align: top;
     width: 100%;
-    @include MQ(Mplus){
+    max-height: pxrem(470);
+    @include MQ(Lplus){
       width: 60%;
     }
     margin-bottom: pxrem(20);
@@ -291,19 +343,22 @@ main{
   .screen-shot{
     overflow: hidden;
     width: 100%;
+    height: auto;
     max-width: pxrem(800);
-    max-height: pxrem(470);
     border: 1px solid $color-backgroundExtraLight;
   }
   #sidebar{
     position: relative;
     display: inline-block;
     vertical-align: top;
-    width: 100%;
-    @include MQ(Mplus){
+    width: 90%;
+    @include MQ(Lplus){
+      overflow-y: auto;
       width: 30%;
+      max-height: pxrem(520);
     }
     min-height: pxrem(200);
+    padding: pxrem(10);
   }
   .detail{
     width: 100%;
@@ -313,6 +368,27 @@ main{
   }
 }
 
+
+.project-link{
+  position: relative;
+  height: pxrem(20);
+  margin-left: pxrem(60);
+  top: pxrem(10);
+  border-bottom: 2px solid $color-backgroundLight;
+  transition: border-bottom 0.3s linear;
+  a{
+    text-decoration: none;
+    color: $color-backgroundLight;
+  }
+}
+.project-link:hover{
+  border-bottom: 2px solid $color-backgroundDark;
+  a{
+    color: $color-backgroundDark;
+  }
+}
+
+// Gallery- section    /////////////////////////////////////////////////////////
 #gallery-wrapper{
   position: relative;
   z-index: 200;
@@ -321,21 +397,21 @@ main{
   background-color: white;
   color: $color-backgroundDark;
   text-align: center;
-}
 
-::-webkit-scrollbar{
-  height: pxrem(10);
-  width: pxrem(0);
-}
-::-webkit-scrollbar-track-piece{
-  background-color: $color-backgroundExtraLight;
-}
-::-webkit-scrollbar-thumb{
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  background-color: $color-backgroundLight;
-  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+  ::-webkit-scrollbar{
+    height: pxrem(10);
+    width: pxrem(0);
+  }
+  ::-webkit-scrollbar-track-piece{
+    background-color: $color-backgroundExtraLight;
+  }
+  ::-webkit-scrollbar-thumb{
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    background-color: $color-backgroundLight;
+    -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+  }
 }
 
 #project-gallery{
@@ -377,14 +453,6 @@ main{
     display: inline-block;
     margin: pxrem(5);
   }
-  .project-link{
-    position: relative;
-    display: inline-block;
-    height: pxrem(20);
-    margin-top: pxrem(40);
-    padding: pxrem(10) pxrem(5);
-    color: white;
-  }
 }
 
 .thumbnail{
@@ -402,51 +470,57 @@ main{
   }
 }
 
-#digital-reserve{
-  background-size: cover;
-  background-image: url('../images/projects/digital-reserve/widescreen.png');
-}
-#jetfighter{
-  background-size: cover;
-  background-image: url('../images/projects/jetfighter/jetfighter.png');
-}
-#blackjack{
-  background-size: cover;
-  background-image: url('../images/projects/blackjack/main.png');
-}
 
+
+// About- section    ///////////////////////////////////////////////////////////
 #about-wrapper{
   position: relative;
   z-index: 80;
-  height: pxrem(700);
+  //height: pxrem(1000);
   width: 100%;
-  padding-bottom: pxrem(80);
+  padding: pxrem(30);
+  //padding-bottom: pxrem(300);
   @include MQ(Mplus){
-    padding: pxrem(30);
+    padding-top: pxrem(120);
+    //height: pxrem(770);
   }
   background: linear-gradient($color-backgroundLight, lighten($color-backgroundLight, 5%));
 }
 #about{
   display: inline-block;
   vertical-align: top;
-  width: 90%;
+  width: 80%;
   margin: pxrem(20) pxrem(10);
-  @include MQ(Mplus){
+  @include MQ(Lplus){
     width: 30%;
     margin: pxrem(90) pxrem(30);
   }
-
-  #profile-pic{
-    height: pxrem(200);
-    width: pxrem(200);
-    border-radius: 50%;
+  p{
+    margin-bottom: pxrem(10);
   }
+  a{
+    font-size: pxrem(18);
+    text-decoration: none;
+    color: darken(white, 10%);
+    border-bottom: 2px solid darken($color-backgroundExtraLight, 10%);
+  }
+  a:hover{
+    color: darken($color-backgroundExtraLight, 10%);
+    border-bottom: 2px solid darken($color-backgroundExtraLight, 20%);
+  }
+}
+
+#profile-pic{
+  display: inline-block;
+  height: pxrem(100);
+  width: pxrem(100);
+  border-radius: 50%;
 }
 
 #skills-wrapper{
   display: inline-block;
   vertical-align: top;
-  width: 100%;
+  width: 90%;
   margin-top: pxrem(20);
   @include MQ(Mplus){
     width: 60%;
@@ -458,13 +532,16 @@ main{
   width: 100%;
   max-width: pxrem(1000);
   margin: 0 auto;
-  //margin-top: pxrem(20);
   padding: 0;
-  text-align: center;
+  text-align: left;
   @include MQ(Mplus){
+    text-align: center;
     padding: pxrem(40);
     width: 70%;
-    //margin-top: pxrem(70);
+  }
+  p{
+    margin-bottom: pxrem(20);
+    color: lighten($color-backgroundLight, 30%);
   }
 
   #skills-description{
@@ -490,30 +567,49 @@ main{
   padding: pxrem(5);
   border: 1px solid $color-backgroundDark;
   border-radius: pxrem(5);
+  cursor: pointer;
+  transition: background-color 0.2s linear, color 0.1s linear;
+  // .tooltiptext {
+  //   z-index: 1;
+  //   position: absolute;
+  //   opacity: 0;
+  //   width: 120px;
+  //   top: 105%;
+  //   left: 50%;
+  //   margin-left: -60px;
+  //   background-color: darken($color-backgroundLight, 1%);
+  //   color: lighten($color-backgroundLight, 40%);
+  //   text-align: center;
+  //   border-radius: 6px;
+  //   padding: 5px 0;
+  //   transition: opacity 0.2s linear;
+  // }
 }
+
 .skill:hover{
   color: white;
   background-color: darken($color-backgroundLight, 3%);
+  // .tooltiptext {
+  //     opacity: 1;
+  // }
 }
 
 footer{
   width: 100%;
-  height: pxrem(400);
-  //margin-top: pxrem(70);
   padding: pxrem(50);
+  padding-top: pxrem(100);
   background-color: $color-backgroundDark;
 }
 
 .footer-info{
-  display: inline-block;
-  vertical-align: top;
-  width: pxrem(400);
-  margin: 0 pxrem(30);
-  #profile-pic{
-    height: pxrem(200);
-    width: pxrem(200);
-    border-radius: 50%;
+  display: block;
+  width: 70%;
+  @include MQ(Mplus){
+    display: inline-block;
+    width: 45%;
   }
+  vertical-align: top;
+  margin: pxrem(40) pxrem(30);
   .social-media-icon{
     vertical-align: middle;
     height: pxrem(40);
@@ -521,15 +617,21 @@ footer{
     margin-right: pxrem(20);
     margin-bottom: pxrem(20);
     border-radius: 50%;
+  }
 
+  a{
+    font-size: pxrem(18);
+    text-decoration: none;
+    color: darken($color-backgroundExtraLight, 10%);
+    border-bottom: 2px solid darken($color-backgroundExtraLight, 10%);
+  }
+  a:hover{
+    color: darken($color-backgroundExtraLight, 20%);
+    border-bottom: 2px solid darken($color-backgroundExtraLight, 20%);
   }
 }
 
-#footer-contact{
-  margin-top: pxrem(40);
-}
-
-iframe{
-  height: pxrem(500);
-  width: 100%;
+#footer-resume{
+  padding-top: pxrem(15);
+  width: 25%;
 }
