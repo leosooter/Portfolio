@@ -305,7 +305,7 @@ portfolioApp.factory("projectFactory", [function(){
   factory.skillSet = [oopSkill, resonsiveSkill, securitySkill, dataStructuresSkill, algoSkill];
 
   factory.featured = algoApp;
-  factory.projects = [algoApp, digitalReserve, messageBoard, blackJack, jetFighter, algorithms, thisPortfolio];
+  factory.projects = [algoApp, digitalReserve, messageBoard, blackJack, jetFighter, algorithms];
 
   return factory;
 }])
