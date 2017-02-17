@@ -50,7 +50,7 @@
 
           <div class="project" ng-repeat="project in projects" ng-class="{'current-project' : project == featured}">
 
-            <img class="thumbnail" src="{{project.thumbnail}}" alt="">
+            <img class="thumbnail" ng-src="{{project.thumbnail}}" alt="">
 
             <div class="project-description" ng-click="changeFeaturedProject(project)">
               <h5>{{project.title}}</h5>
@@ -67,9 +67,8 @@
       <section id="featured-wrapper">
         <span id="featured-bookmark"  class="bookmark"></span>
         <div id="screen-shot-wrapper">
-          <!-- <iframe ng-if="featured.iframe" src="{{featuredIFrame}}" class="screen-shot"></iframe> -->
-          <img ng-cloak="" ng-if="!featuredDetail.screenShot" src="{{featured.screenShot}}" alt="" class="screen-shot">
-          <img ng-cloak="" ng-if="featuredDetail.screenShot" src="{{featuredDetail.screenShot}}" alt="" class="screen-shot">
+          <img ng-if="!featuredDetail.screenShot" ng-src="{{featured.screenShot}}" alt="" class="screen-shot">
+          <img ng-if="featuredDetail.screenShot" ng-src="{{featuredDetail.screenShot}}" alt="" class="screen-shot">
         </div>
 
         <div id="sidebar">

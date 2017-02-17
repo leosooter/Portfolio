@@ -188,7 +188,7 @@ portfolioApp.factory("projectFactory", [function(){
     repoUrl : null,
     liveUrl : null,
     //iframe : false,
-    screenShot : 'assets/images/projects/algorithms/main4.png',
+    screenShot : 'assets/images/projects/algorithms/main.png',
     thumbnail : 'assets/images/projects/algorithms/main-small.png',
     description : [`As part of the training at Coding Dojo we spent a minimum of an hour per day working on learning new algorithms and data-structures.`,
       `We studied different ways of storing, sorting and retreiving data, and then created and compared our own implementations.`,
