@@ -303,6 +303,18 @@ main {
   margin-bottom: 2.5rem;
 }
 
+#intro a {
+  font-size: 1.125rem;
+  text-decoration: none;
+  color: white;
+  border-bottom: 2px solid #a5cdf3;
+}
+
+#intro a:hover {
+  color: #d2e6f9;
+  border-bottom: 2px solid #a5cdf3;
+}
+
 #featured-wrapper {
   position: relative;
   z-index: 300;

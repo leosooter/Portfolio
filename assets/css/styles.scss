@@ -304,6 +304,16 @@ main{
     margin: 0 auto;
     margin-bottom: pxrem(40);
   }
+  a{
+    font-size: pxrem(18);
+    text-decoration: none;
+    color: lighten($color-backgroundExtraLight, 10%);
+    border-bottom: 2px solid darken($color-backgroundExtraLight, 10%);
+  }
+  a:hover{
+    color: $color-backgroundExtraLight;
+    border-bottom: 2px solid darken($color-backgroundExtraLight, 10%);
+  }
 }
 
 
