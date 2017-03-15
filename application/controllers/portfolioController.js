@@ -34,9 +34,9 @@ portfolioApp.controller("projectController", ["$scope", "projectFactory", "$sce"
   $scope.focusSkill = function(skill){
     $scope.goToElement('featured-bookmark');
     $scope.changeFeaturedProject(skill.projects[0]);
-    for (var detail of $scope.featured.details) {
-      if(detail.name === skill.name){
-        $scope.changeFeaturedDetail(detail);
+    for (var index in $scope.featured.details) {
+      if($scope.featured.details[index].name === skill.name){
+        $scope.changeFeaturedDetail($scope.featured.details[index]);
       }
     }
   }
