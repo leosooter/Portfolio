@@ -3,7 +3,6 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no" />
-    <meta http-equiv="X-UA-Compatible" content="IE=11" />
     <title>Leo Sooter</title>
     <link rel="stylesheet" href="assets/css/styles.css">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa|Karla|Overlock+SC" rel="stylesheet">
@@ -55,7 +54,7 @@
             <img class="thumbnail" ng-src="{{project.thumbnail}}" alt="">
 
             <div class="project-description" ng-click="changeFeaturedProject(project)">
-              <h5>{{project.title}}</h5>
+              <h5 ng-bind="project.title"></h5>
               <p>
                 <span ng-repeat="technology in project.technologies | limitTo : 3" class="project-tech">{{technology}}</span>
               </p>
@@ -74,7 +73,7 @@
         </div>
 
         <div id="sidebar">
-          <h4><strong>{{featured.title}}</strong></h4>
+          <h4><strong ng-bind="featured.title"></strong></h4>
           <div class="detail">
             <h4>{{featuredDetail.title}}</h4>
             <!-- <h3>Description: {{featured.description[0]}}</h3> -->
